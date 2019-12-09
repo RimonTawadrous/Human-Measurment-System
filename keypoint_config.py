@@ -39,6 +39,8 @@ left_Knee_inner_color = (210,252,218)
 left_ankle_inner_color = (0,161,139)
 left_ankle_outer_color = (169,245,235)
 
+Head_color = (255,0,255)
+foot_color = (255,0,255)
 #hsv hue set value  (color)
 left_sholder_inner_lower = np.array([-10, 212, 159])
 left_sholder_inner_upper = np.array([ 10, 232, 239])
