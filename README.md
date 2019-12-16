@@ -5,7 +5,7 @@
   ### 1- shot 2 photos 1 front and one side view.   
   ### 2- open file "front_image_keypoint_selector.py"  
      - edit "SCALE_PERCENT" as desired.  
-     - edit "FILE_NAME" write the name you want.                  A  
+     - edit "FILE_NAME" write the name you want.                  **This is bold text**  
      - edit "image_name" type imput front image name.  
      - finally change "PERSON_HEIGHT" with the new image-person's hight.  
      
