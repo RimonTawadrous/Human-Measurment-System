@@ -11,7 +11,7 @@
      
   ### 3- open file "side_image_keypoint_selector.py"  
      - edit "SCALE_PERCENT" as desired.  
-     - edit "FILE_NAME" write the name you want.                   B  
+     - edit "FILE_NAME" write the name you want.                   B   
      - edit "image_name" type imput front image name.  
      - finally change "PERSON_HEIGHT" with the new image-person's hight.  
   
