@@ -29,8 +29,20 @@ def main():
     global image_hsv, pixel
 
     #OPEN DIALOG FOR READING THE IMAGE FILE
-    img = cv2.imread("images/hatem.jpg", cv2.IMREAD_COLOR)
+    img = cv2.imread("images/Rimon1.1.jpg", cv2.IMREAD_COLOR)
     
+    SCALE_PERCENT = 20
+    # scaling 
+    print("img.shape[1]",img.shape[1])
+    print("img.shape[0]",img.shape[0])
+    #calculate the 50 percent of original dimensions
+    width = int(img.shape[1] * SCALE_PERCENT / 100)
+    height = int(img.shape[0] * SCALE_PERCENT / 100)
+    dsize = (width, height)
+    # resize image
+    img = cv2.resize(img, dsize)
+    print("img.shape[1]",img.shape[1])
+    print("img.shape[0]",img.shape[0])
 
     # sholder outer
     cv2.circle(img, (150,208), point_radius, right_sholder_outer_color, -1)
@@ -56,8 +68,6 @@ def main():
     cv2.circle(img, (174,395), point_radius, right_waist_color, -1)
     #left waist
     cv2.circle(img, (366,390), point_radius, left_waist_color, -1)
-
- 
     #right hip
     cv2.circle(img, (280,324), point_radius, right_hip_color, -1)
     #left hip
@@ -82,6 +92,11 @@ def main():
     cv2.circle(img, (366,525), point_radius, left_ankle_inner_color, -1)
     #left Knee outer
     cv2.circle(img, (388,521), point_radius, left_ankle_outer_color, -1)    
+
+    cv2.circle(img, (10,10), point_radius, left_chest_color, -1)
+    #left chest and arm meeting
+    cv2.circle(img, (20,20), point_radius, right_chest_color, -1)
+    #right waist
 
     cv2.imshow("BGR",img)
 
