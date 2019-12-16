@@ -1,0 +1,37 @@
+front_image_name = "images/Rimon2.1.jpg"
+front_image_scale_percent = 20
+front_image_upper_ratio = 3.64457831
+front_image_lower_ratio = 3.64457831
+front_image_ratio= 3.64457831
+
+right_sholder_outer_point = (123, 187)
+right_sholder_inner_point = (168, 169)
+left_sholder_inner_point = (229, 169)
+left_sholder_outer_point = (273, 194)
+right_elbow_outer_point = (80, 292)
+right_elbow_inner_point = (114, 307)
+left_elbow_inner_point = (273, 315)
+left_elbow_outer_point = (308, 296)
+right_chest_arm_meeting_point = (130, 227)
+left_chest_arm_meeting_point = (263, 228)
+right_chest_point = (133, 248)
+left_chest_point = (260, 250)
+right_waist_point = (132, 315)
+left_waist_point = (255, 315)
+right_hip_point = (129, 368)
+left_hip_point = (257, 368)
+stone_of_trousers_point = (194, 443)
+right_Knee_outer_point = (130, 530)
+right_Knee_inner_point = (174, 533)
+left_Knee_inner_point = (207, 534)
+left_Knee_outer_point = (251, 532)
+right_ankle_outer_point = (132, 642)
+right_ankle_inner_point = (162, 645)
+left_ankle_inner_point = (224, 647)
+left_ankle_outer_point = (252, 648)
+head_point = (194, 64)
+foot_color = (194, 682)
+
+front_image_hip_hight = 368
+front_image_right_hip_pixel =(129, 368)
+front_image_left_hip_pixel =(257, 368)
