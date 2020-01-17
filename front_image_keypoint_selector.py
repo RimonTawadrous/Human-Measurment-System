@@ -5,11 +5,20 @@ import math
 from keypoint_config import *
 
 POINTS_DICT = {}
+
+SCALE_PERCENT = 100
+FILE_NAME = "kishk2_1.py"
+image_name = "kishk2.1.jpg"
+PERSON_HEIGHT = 179
+
+
+
+
+OUTPUT_DIRECTORY = "front_keypoints/"
+INPUT_DIRECTORY = "images/"
 iterator = 0
-SCALE_PERCENT = 20
-FILE_NAME = "front_keypoints/Rimon2_1.py"
-image_name = "images/Rimon3.1.jpg"
-PERSON_HEIGHT = 166
+FILE_NAME = OUTPUT_DIRECTORY+FILE_NAME
+image_name = INPUT_DIRECTORY+image_name
 
 POINTS_COLOR = {0 : right_sholder_outer_color, 1 : right_sholder_inner_color, 2 : left_sholder_inner_color, 3 : left_sholder_outer_color, 4 : right_elbow_outer_color,
                 5 : right_elbow_inner_color, 6 : left_elbow_inner_color, 7 : left_elbow_outer_color, 8 : right_chest_arm_meeting_color, 9 : left_chest_arm_meeting_color,

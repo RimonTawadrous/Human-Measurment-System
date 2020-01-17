@@ -5,14 +5,20 @@ import math
 from keypoint_config import *
 
 POINTS_DICT = {}
+
+SCALE_PERCENT = 100
+image_name = "kisk1.2.jpg"
+FILE_NAME = "kisk2_2.py"
+PERSON_HEIGHT = 179
+
+
+
+
+OUTPUT_DIRECTORY = "side_keypoints/"
+INPUT_DIRECTORY = "images/"
 iterator = 0
-SCALE_PERCENT = 20
-image_name = "images/Rimon2.2.jpg"
-FILE_NAME = "Rimon2_2.py"
-PERSON_HEIGHT = 166
-DIRECTORY = "side_keypoints/"
-
-
+FILE_NAME = OUTPUT_DIRECTORY+FILE_NAME
+image_name = INPUT_DIRECTORY+image_name
 
 
 POINTS_COLOR = {0 : chest_front_color, 1 : chest_back_color, 2 : waist_front_color, 3 : waist_back_color, 4 : hip_front_color,
@@ -65,7 +71,7 @@ if __name__ == "__main__":
     except:
         pass
     finally:
-        with open(DIRECTORY+FILE_NAME, 'a') as the_file:
+        with open(FILE_NAME, 'a') as the_file:
             ratio = eclidian_distance(POINTS_DICT[8],POINTS_DICT[9])/PERSON_HEIGHT
             the_file.write('side_image_name = "'+str(image_name)+'"\n')
             the_file.write('side_image_scale_percent = '+str(SCALE_PERCENT)+'\n')

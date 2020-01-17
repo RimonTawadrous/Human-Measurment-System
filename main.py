@@ -3,9 +3,10 @@ import numpy as np
 import math
 from math import pi
 from math import sqrt
+import sys 
 from keypoint_config import *
-from front_keypoints.Rimon2_1 import *
-from side_keypoints.Rimon2_2 import *
+from front_keypoints.kishk2_1 import *
+from side_keypoints.kisk2_2 import *
 
 
 SIDE_KEYPOINTS = {"chest_front":[0,0], "chest_back":[0,0], "waist_front":[0,0], "waist_back":[0,0],"hip_front":[0,0],"hip_back":[0,0],
@@ -25,7 +26,7 @@ straight_measurements_average_dict = {"sholder":[], "front_chest":[], "front_wai
     "waist_knee_left":[], "waist_knee_right":[], "waist_hip_left":[], "waist_hip_right":[], "left_knee_width":[], "right_knee_width":[], "knee_to_ankle_right":[],
     "knee_to_ankle_left":[], "T_stone_to_left_knee":[], "T_stone_to_right_knee":[], "side_chest":[], "side_waist":[], "side_hip":[], "natural_waist":[]}   
 
-true_measurments_dict = {"chest_nipple":[], "waist":[], "hip":[], "natural_waist":[]} 
+true_measurments_dict = {"chest_nipple":[], "waist":[], "hip":[], "natural_hip":[]} 
 
 def rectangle_premiter(r1,r2):
 
@@ -34,13 +35,30 @@ def rectangle_premiter(r1,r2):
 def circle_circumfrance(radius):
     return 2*pi*radius
 
-def ellipse_perimeter(r1,r2):
+def ellipse_perimeter1(r1,r2):
+
+    permeter1 = (2 * pi * sqrt( (r1**2 + r2**2) / (2 * 1.0) ) ) 
+    permeter2 = pi*(3*(r1+r2)-sqrt((3*r1+r2)*(r1+3*r2)))
+
+    permeter = ((permeter1*1.02 + permeter2)/2)
+    return permeter1
+
+def ellipse_perimeter2(r1,r2):
 
     permeter1 = (2 * pi * sqrt( (r1**2 + r2**2) / (2 * 1.0) ) ) 
     permeter2 = pi*(3*(r1+r2)-sqrt((3*r1+r2)*(r1+3*r2)))
 
     permeter = ((permeter1*1.02 + permeter2)/2)
     return permeter2
+
+def ellipse_perimeter(r1,r2):
+
+    permeter1 = (2 * pi * sqrt( (r1**2 + r2**2) / (2 * 1.0) ) ) 
+    permeter2 = pi*(3*(r1+r2)-sqrt((3*r1+r2)*(r1+3*r2)))
+
+    permeter = ((permeter1*1.02 + permeter2)/2)
+    return permeter
+
 
 def apply_filter_return_countoures(hsv_image, hsv_color_lower, hsv_color_upper, min_contor_area = 15, img = None , contor_label=""):
     filtered_image = cv2.inRange(hsv_image, hsv_color_lower, hsv_color_upper)
@@ -173,7 +191,7 @@ def front_image_measurments(front_image):
     (res,yellow,FRONT_KEYPOINTS["right_sholder_outer"],_) = apply_filter_return_countoures(hsv,right_sholder_outer_lower,right_sholder_outer_upper,min_contor_area= 30, img=front_image,contor_label="RSO")
     
     (res,yellow,FRONT_KEYPOINTS["left_elbow_inner"],_) = apply_filter_return_countoures(hsv,left_elbow_inner_lower,left_elbow_inner_upper,min_contor_area= 30, img=front_image,contor_label="LEI")
-    (res,yellow,FRONT_KEYPOINTS["left_elbow_outer"],_) = apply_filter_return_countoures(hsv,left_elbow_outer_lower,left_elbow_outer_upper,min_contor_area= 30, img=front_image,contor_label="LEO ")
+    # (res,yellow,FRONT_KEYPOINTS["left_elbow_outer"],_) = apply_filter_return_countoures(hsv,left_elbow_outer_lower,left_elbow_outer_upper,min_contor_area= 30, img=front_image,contor_label="LEO ")
 
     (res,yellow,FRONT_KEYPOINTS["right_elbow_inner"],_) = apply_filter_return_countoures(hsv,right_elbow_inner_lower,right_elbow_inner_upper,min_contor_area= 30, img=front_image,contor_label="REI")
     (res,yellow,FRONT_KEYPOINTS["right_elbow_outer"],_) = apply_filter_return_countoures(hsv,right_elbow_outer_lower,right_elbow_outer_upper,min_contor_area= 30, img=front_image,contor_label="REO")
@@ -355,23 +373,37 @@ if __name__ == "__main__":
     # chest perimeter
     r1 = straight_measurements_average_dict["front_chest"]/2
     r2 = straight_measurements_average_dict["side_chest"]/2
-    true_measurments_dict["chest_nipple"].append(rectangle_premiter(r1,r2))
-    true_measurments_dict["chest_nipple"].append(ellipse_perimeter(r1,r2))
+    print("r1= ", r1)
+    print("r2= ", r2)
+    # true_measurments_dict["chest_nipple"].append(rectangle_premiter(r1*2,r2*2))
+    # true_measurments_dict["chest_nipple"].append((ellipse_perimeter1(r1,r2)/2)+)
+    true_measurments_dict["chest_nipple"].append(ellipse_perimeter2(r1,r2))
+    true_measurments_dict["chest_nipple"].append((ellipse_perimeter1(r1,r2)/2)+ellipse_perimeter1(r1,r2/2)/2)
+
     # end of chest
 
-    # chest perimeter
+    # waist perimeter
     r1 = straight_measurements_average_dict["front_waist"]/2
     r2 = straight_measurements_average_dict["side_waist"]/2
-    true_measurments_dict["waist"].append(rectangle_premiter(r1,r2))
-    true_measurments_dict["waist"].append(ellipse_perimeter(r1,r2))
+    print("r1= ", r1)
+    print("r2= ", r2)
+    # true_measurments_dict["waist"].append(rectangle_premiter(r1*2,r2*2))
+    # true_measurments_dict["waist"].append(ellipse_perimeter1(r1,r2))
+    true_measurments_dict["waist"].append(ellipse_perimeter2(r1,r2))
+    true_measurments_dict["waist"].append((ellipse_perimeter1(r1,r2)/2)+ellipse_perimeter1(r1,r2/2)/2)
 
     # end of chest
 
-    # chest perimeter
+    # hip perimeter
     r1 = straight_measurements_average_dict["front_hip"]/2
     r2 = straight_measurements_average_dict["side_hip"]/2
-    true_measurments_dict["hip"].append(rectangle_premiter(r1,r2))
-    true_measurments_dict["hip"].append(ellipse_perimeter(r1,r2))
+    print("r1= ", r1)
+    print("r2= ", r2)
+    # true_measurments_dict["hip"].append(rectangle_premiter(r1*2,r2*2))
+    # true_measurments_dict["hip"].append(ellipse_perimeter1(r1,r2))
+    true_measurments_dict["hip"].append(ellipse_perimeter2(r1,r2))
+    true_measurments_dict["hip"].append((ellipse_perimeter1(r1,r2)/2)+ellipse_perimeter1(r1,r2/2)/2)
+
     # end of chest
 
     #print true measurments
