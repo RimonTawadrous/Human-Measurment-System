@@ -1,0 +1,37 @@
+front_image_name = "images/kishk2.1.jpg"
+front_image_scale_percent = 100
+front_image_upper_ratio = 4.262569832402234
+front_image_lower_ratio = 4.262569832402234
+front_image_ratio = 4.262569832402234
+
+right_sholder_outer_point = (299, 197)
+right_sholder_inner_point = (353, 172)
+left_sholder_inner_point = (425, 170)
+left_sholder_outer_point = (479, 183)
+right_elbow_outer_point = (262, 332)
+right_elbow_inner_point = (301, 345)
+left_elbow_inner_point = (494, 343)
+left_elbow_outer_point = (535, 334)
+right_chest_arm_meeting_point = (313, 241)
+left_chest_arm_meeting_point = (475, 241)
+right_chest_point = (318, 268)
+left_chest_point = (475, 264)
+right_waist_point = (321, 330)
+left_waist_point = (476, 330)
+right_hip_point = (311, 451)
+left_hip_point = (484, 457)
+stone_of_trousers_point = (395, 512)
+right_Knee_outer_point = (320, 641)
+right_Knee_inner_point = (370, 647)
+left_Knee_inner_point = (420, 650)
+left_Knee_outer_point = (474, 652)
+right_ankle_outer_point = (329, 797)
+right_ankle_inner_point = (364, 800)
+left_ankle_inner_point = (435, 804)
+left_ankle_outer_point = (464, 803)
+head_point = (394, 37)
+foot_color = (394, 800)
+
+front_image_hip_hight = 451
+front_image_right_hip_pixel =(311, 451)
+front_image_left_hip_pixel =(484, 457)
